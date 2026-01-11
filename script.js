@@ -82,3 +82,15 @@ document.querySelectorAll("a").forEach(link => {
 window.addEventListener("pageshow", () => {
   document.body.classList.remove("fade-out");
 });
+/* ================================
+   DARK MODE (GLOBAL FOR ALL PAGES)
+================================ */
+
+const darkBtn = document.getElementById("langBtn");
+
+if (darkBtn) {
+  darkBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    darkBtn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  });
+}
