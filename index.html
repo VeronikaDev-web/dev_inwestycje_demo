@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Inwestycje – Demo</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #ffffff;
+  color: #111;
+  overflow-x: hidden;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 85vh;
+  background: url("https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1400&q=80")
+    center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: white;
+  max-width: 760px;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 35px;
+}
+
+.cta {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 14px 28px;
+  border: 1px solid white;
+  color: white;
+  background: transparent;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background: white;
+  color: black;
+}
+
+/* GRID INWESTYCJI */
+.section {
+  padding: 80px 6%;
+}
+
+.section h2 {
+  font-size: 2.2rem;
+  font-weight: 300;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #f7f7f7;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.card-info {
+  padding: 18px 22px;
+}
+
+.card-info h3 {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+
+.card-info p {
+  font-size: 0.95rem;
+  opacity: 0.7;
+}
+
+/* DLACZEGO MY */
+.features {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.feature {
+  width: 260px;
+  text-align: center;
+}
+
+.feature h4 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.feature p {
+  opacity: 0.8;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Nowoczesne Inwestycje Premium</h1>
+    <p>Prezentacja nieruchomości w minimalistycznej, eleganckiej formie – idealna dla dewelopera.</p>
+    <div class="cta">
+      <a href="#" class="btn">Zobacz inwestycję</a>
+      <a href="#" class="btn">Kontakt</a>
+    </div>
+  </div>
+</section>
+
+<!-- INWESTYCJE -->
+<section class="section">
+  <h2>Wybrane inwestycje</h2>
+
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1502673530728-f79b4cab31b1?auto=format&fit=crop&w=800&q=80">
+      <div class="card-info">
+        <h3>Osiedle Zielone Tarasy</h3>
+        <p>Gdańsk • 2024</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1496309732348-3627f3f040ee?auto=format&fit=crop&w=800&q=80">
+      <div class="card-info">
+        <h3>Nowa Przystań</h3>
+        <p>Sopot • 2023</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80">
+      <div class="card-info">
+        <h3>Rezydencja Panorama</h3>
+        <p>Gdynia • 2025</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+  <h2>Dlaczego warto z nami współpracować</h2>
+
+  <div class="features">
+    <div class="feature">
+      <h4>Minimalistyczny premium design</h4>
+      <p>Elegancja, przejrzystość, estetyka deweloperska.</p>
+    </div>
+
+    <div class="feature">
+      <h4>Pełna responsywność</h4>
+      <p>Strona dopracowana na każdy ekran — mobile first.</p>
+    </div>
+
+    <div class="feature">
+      <h4>Nowoczesne animacje</h4>
+      <p>Subtelne efekty, które podkreślają profesjonalizm.</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
