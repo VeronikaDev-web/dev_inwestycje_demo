@@ -1,142 +1,157 @@
-/* =========================================
-   PREMIUM ULTRA LUX STYLE
-   Developer – 2026
-   ========================================= */
-
-/* ----------- RESET ----------- */
+/* ============================
+   GLOBAL RESET & BASE
+============================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html {
+html, body {
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: #111;
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: "Inter", sans-serif;
-  background: #ffffff;
-  color: #111;
-  overflow-x: hidden;
-  transition: background 0.3s, color 0.3s;
-}
-
-/* Dark Mode */
+/* Dark mode */
 body.dark {
-  background: #0c0c0c;
-  color: #e6e6e6;
+  background: #0f0f0f;
+  color: #eee;
 }
 
-/* ----------- HEADER ----------- */
-header {
+/* ============================
+   HEADER
+============================ */
+.header {
   width: 100%;
-  padding: 25px 60px;
+  height: 80px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  position: sticky;
+  justify-content: space-between;
+  padding: 0 40px;
+  position: fixed;
   top: 0;
+  left: 0;
+  z-index: 100;
   background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  z-index: 1000;
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid #eee;
 }
 
-body.dark header {
-  background: rgba(10,10,10,0.85);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+body.dark .header {
+  background: rgba(20, 20, 20, 0.75);
+  border-bottom: 1px solid #222;
 }
 
 .logo {
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
 }
 
 .logo span {
   font-weight: 300;
-  margin-left: 5px;
+  margin-left: 4px;
+  color: #bda76f;
 }
 
-nav a {
-  margin-left: 35px;
-  text-decoration: none;
-  font-size: 16px;
-  color: inherit;
-  position: relative;
-}
-
-nav a.active::after {
-  content: "";
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #000;
-}
-
-body.dark nav a.active::after {
-  background: #fff;
-}
-
-.lang-switch {
-  margin-left: 35px;
-  font-size: 18px;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  border: 1px solid #aaa;
-  background: transparent;
-  transition: 0.3s;
-}
-
-body.dark .lang-switch {
-  border-color: #555;
-  color: #fff;
-}
-
-/* ----------- HERO ----------- */
-.hero {
+/* NAV */
+.header nav {
   display: flex;
+  gap: 28px;
   align-items: center;
-  justify-content: space-between;
-  padding: 120px 60px;
 }
 
-.hero-content {
+.header nav a {
+  text-decoration: none;
+  font-size: 15px;
+  color: #222;
+  opacity: 0.75;
+  transition: 0.25s;
+}
+
+body.dark .header nav a {
+  color: #eee;
+  opacity: 0.85;
+}
+
+.header nav a.active,
+.header nav a:hover {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.theme-switch {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* ============================
+   HERO FULLSCREEN
+============================*/
+.hero-full {
+  margin-top: 80px;
+  width: 100%;
+  height: 90vh;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 30px 30px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.75);
+  transition: 0.4s;
+}
+
+body.dark .hero-bg {
+  filter: brightness(0.45);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 5;
+  padding: 120px 60px;
   max-width: 520px;
 }
 
-.hero h1 {
-  font-size: 48px;
-  line-height: 1.1;
-  margin-bottom: 25px;
+.hero-inner h1 {
+  font-size: 52px;
   font-weight: 800;
+  line-height: 1.15;
 }
 
-.hero p {
+.hero-inner p {
+  margin-top: 16px;
   font-size: 18px;
-  margin-bottom: 35px;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
-.hero .buttons {
+/* HERO BUTTONS */
+.hero-buttons {
+  margin-top: 35px;
   display: flex;
-  gap: 20px;
+  gap: 16px;
 }
 
 .btn-primary,
-.btn-secondary {
-  padding: 14px 28px;
-  border-radius: 50px;
+.btn-secondary,
+.btn-tertiary {
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-size: 15px;
   cursor: pointer;
+  transition: 0.25s;
   text-decoration: none;
-  font-size: 16px;
-  transition: 0.3s;
 }
 
+/* PRIMARY (black) */
 .btn-primary {
   background: #111;
   color: #fff;
@@ -147,265 +162,125 @@ body.dark .lang-switch {
   transform: translateY(-2px);
 }
 
-body.dark .btn-primary {
-  background: #fff;
-  color: #000;
-}
-
+/* SECONDARY (white border) */
 .btn-secondary {
-  border: 2px solid #111;
+  border: 1px solid #111;
+  background: transparent;
   color: #111;
 }
 
-.btn-secondary:hover {
-  transform: translateY(-2px);
+body.dark .btn-secondary {
+  color: #fff;
+  border-color: #fff;
 }
 
-body.dark .btn-secondary {
-  border-color: #fff;
+.btn-secondary:hover {
+  background: #111;
   color: #fff;
 }
 
-/* --- HERO IMAGE --- */
-.hero-image {
-  width: 50%;
-  height: 520px;
-  border-radius: 20px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+/* TERTIARY (transparent) */
+.btn-tertiary {
+  background: transparent;
+  color: #111;
+  border: none;
+  text-decoration: underline;
 }
 
-/* ----------- FEATURES (3 BOXES) ----------- */
+body.dark .btn-tertiary {
+  color: #fff;
+}
+
+.btn-tertiary:hover {
+  opacity: 0.6;
+}
+
+/* ============================
+   FEATURES 3 PREMIUM CARDS
+============================ */
 .features {
-  display: flex;
-  justify-content: space-between;
-  padding: 80px 60px;
-}
-
-.feature {
-  width: 30%;
-  padding: 50px;
-  border-radius: 20px;
-  background: #f8f8f8;
-  transition: 0.3s;
-}
-
-body.dark .feature {
-  background: #1a1a1a;
-}
-
-.feature:hover {
-  transform: translateY(-5px);
-}
-
-.feature h3 {
-  font-size: 22px;
-  margin-bottom: 10px;
-}
-
-/* ----------- INWESTYCJE HERO ----------- */
-.inwestycje-hero {
-  padding: 120px 60px 40px 60px;
-  text-align: left;
-}
-
-.inwestycje-hero h1 {
-  font-size: 42px;
-  margin-bottom: 20px;
-}
-
-/* ----------- GRID – INWESTYCJE LIST ----------- */
-.inwestycje-grid {
-  padding: 0 60px 80px;
+  margin-top: 80px;
+  padding: 40px 60px 120px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
 }
 
-.inwestycja-card {
-  display: block;
-  position: relative;
-  border-radius: 18px;
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  transition: 0.35s;
-  background: #eaeaea;
-}
-
-body.dark .inwestycja-card {
-  background: #222;
-}
-
-.inwestycja-card .thumb {
+.feature-card {
   height: 300px;
+  border-radius: 18px;
   background-size: cover;
   background-position: center;
-}
-
-.inwestycja-card h3 {
-  font-size: 22px;
-  margin: 20px;
-}
-
-.inwestycja-card p {
-  margin: 0 20px 20px;
-  opacity: 0.8;
-}
-
-.inwestycja-card:hover {
-  transform: translateY(-6px);
-}
-
-/* ----------- INDIVIDUAL INVEST PAGE ----------- */
-.invest-hero {
-  display: flex;
-  padding: 120px 60px;
-  gap: 60px;
-}
-
-.invest-image {
-  width: 55%;
-  height: 520px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 20px;
-}
-
-.invest-info {
-  width: 45%;
-}
-
-.invest-info h1 {
-  font-size: 42px;
-  margin-bottom: 20px;
-}
-
-.invest-info .lead {
-  font-size: 18px;
-  margin-bottom: 25px;
-  opacity: 0.8;
-}
-
-.details {
-  margin-bottom: 30px;
-  list-style: none;
-}
-
-.details li {
-  margin-bottom: 8px;
-  opacity: 0.9;
-}
-
-/* ----------- CONTACT ----------- */
-.contact {
-  padding: 120px 60px;
-  display: flex;
-  gap: 80px;
-}
-
-.contact-form {
-  width: 50%;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-}
-
-.contact-form input,
-.contact-form textarea {
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  width: 100%;
-  transition: 0.3s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: #000;
-}
-
-body.dark .contact-form input,
-body.dark .contact-form textarea {
-  background: #1a1a1a;
-  border-color: #444;
+  justify-content: flex-end;
+  padding: 20px;
   color: #fff;
+  transition: 0.35s;
+  cursor: pointer;
 }
 
-.contact-info {
-  width: 40%;
-  font-size: 18px;
-  line-height: 1.7;
+.feature-card .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.6),
+      rgba(0,0,0,0.1)
+  );
+  z-index: 1;
 }
 
-/* ----------- FOOTER ----------- */
+.feature-card h3,
+.feature-card p {
+  position: relative;
+  z-index: 2;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  filter: brightness(1.05);
+}
+
+/* DARK MODE */
+body.dark .feature-card {
+  filter: brightness(0.85);
+}
+
+/* ============================
+   FOOTER
+============================ */
 footer {
-  padding: 50px;
   text-align: center;
+  padding: 40px 0;
   opacity: 0.7;
   font-size: 14px;
-  margin-top: 80px;
 }
 
-/* ----------- 404 ----------- */
-.notfound {
-  text-align: center;
-  padding: 140px 20px;
+body.dark footer {
+  color: #bbb;
 }
 
-.notfound h1 {
-  font-size: 92px;
-}
-
-.notfound p {
-  margin-top: 20px;
-  font-size: 22px;
-}
-
-/* ----------- RESPONSIVE ----------- */
-@media (max-width: 900px) {
-
-  .hero {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .hero-image {
-    width: 100%;
-    height: 380px;
-    margin-top: 30px;
-  }
-
+/* ============================
+   RESPONSIVE
+============================ */
+@media(max-width: 880px) {
   .features {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .features .feature {
-    width: 100%;
-  }
-
-  .inwestycje-grid {
     grid-template-columns: 1fr;
   }
 
-  .invest-hero {
-    flex-direction: column;
+  .hero-inner {
+    padding: 80px 30px;
   }
 
-  .invest-image,
-  .invest-info {
-    width: 100%;
+  .hero-inner h1 {
+    font-size: 36px;
   }
 
-  .contact {
-    flex-direction: column;
+  .hero-full {
+    height: 75vh;
   }
-
-  .contact-form,
-  .contact-info {
-    width: 100%;
-  }
-   }
+}
