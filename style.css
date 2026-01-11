@@ -284,3 +284,147 @@ body.dark footer {
     height: 75vh;
   }
 }
+/* =====================================
+   GLOBAL SUBPAGE FIXES (LUX VERSION)
+===================================== */
+
+/* Контейнер для всех внутренних страниц */
+.subpage {
+  max-width: 1200px;
+  margin: 120px auto 80px;
+  padding: 0 20px;
+}
+
+/* Заголовки подстраниц */
+.subpage h1 {
+  font-size: 38px;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* Абзацы */
+.subpage p {
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* =====================================
+    INWESTYCJE – GRID
+===================================== */
+
+.inwestycje-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.inwest-card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform .25s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.inwest-card:hover {
+  transform: translateY(-6px);
+}
+
+.inwest-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.inwest-card h3 {
+  font-size: 20px;
+  padding: 15px 15px 5px;
+}
+
+.inwest-card p {
+  padding: 0 15px 20px;
+  opacity: .7;
+}
+
+/* =====================================
+    PODSTRONA INWESTYCJI (PANORAMA / PRZYSTAŃ / TARASY)
+===================================== */
+
+.invest-hero {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin-bottom: 60px;
+}
+
+.invest-hero img {
+  width: 45%;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.invest-info {
+  width: 55%;
+}
+
+.invest-info h1 {
+  margin-bottom: 15px;
+}
+
+.invest-info ul {
+  margin: 20px 0 30px;
+  padding-left: 20px;
+  line-height: 1.7;
+}
+
+/* =====================================
+    KONTAKT
+===================================== */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.contact-form textarea {
+  height: 150px;
+  resize: none;
+}
+
+/* =====================================
+    DARK MODE FIX UNIVERSAL
+===================================== */
+
+body.dark .subpage,
+body.dark .contact-form input,
+body.dark .contact-form textarea {
+  background: #111;
+  color: #fff;
+}
+
+body.dark .inwest-card {
+  background: #1f1f1f;
+}
+
+body.dark .inwest-card p {
+  color: #aaa;
+}
+
+body.dark .invest-info ul {
+  color: #ddd;
+}
