@@ -1,10 +1,6 @@
-/* ===================================================
-   PREMIUM ULTRA LUX SCRIPT
-   Developer Demo — 2026
-   =================================================== */
-
-/* ---------- DARK MODE ---------- */
-
+/* ===========================================
+   DARK MODE TOGGLE
+=========================================== */
 const langBtn = document.getElementById("langBtn");
 
 if (langBtn) {
@@ -20,56 +16,69 @@ if (langBtn) {
   });
 }
 
+/* ===========================================
+   SCROLL TO FEATURES (третья кнопка HERO)
+=========================================== */
+const btnScroll = document.getElementById("scrollToFeatures");
+const featuresSection = document.querySelector(".features");
 
-/* ---------- LANGUAGE SWITCH (PL / EN) ---------- */
-
-const langElements = document.querySelectorAll("[data-pl][data-en]");
-
-function setLanguage(lang) {
-  langElements.forEach(el => {
-    el.textContent = el.getAttribute(`data-${lang}`);
+if (btnScroll && featuresSection) {
+  btnScroll.addEventListener("click", () => {
+    featuresSection.scrollIntoView({ behavior: "smooth" });
   });
 }
 
-let currentLanguage = "pl";
-
-/* нажимаем на кнопку — меняем язык */
-if (langBtn) {
-  langBtn.addEventListener("dblclick", () => {
-    currentLanguage = currentLanguage === "pl" ? "en" : "pl";
-    setLanguage(currentLanguage);
-  });
-}
-
-
-/* ---------- REVEAL ANIMATION ---------- */
-
+/* ===========================================
+   REVEAL ON SCROLL (анимация появления)
+=========================================== */
 const revealElements = document.querySelectorAll(".reveal");
 
-function handleReveal() {
-  revealElements.forEach(el => {
-    const position = el.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
+function revealOnScroll() {
+  const windowHeight = window.innerHeight;
 
-    if (position < windowHeight - 80) {
-      el.classList.add("visible");
+  revealElements.forEach((el) => {
+    const top = el.getBoundingClientRect().top;
+
+    if (top < windowHeight - 100) {
+      el.classList.add("revealed");
     }
   });
 }
 
-window.addEventListener("scroll", handleReveal);
-window.addEventListener("load", handleReveal);
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
 
-
-/* ---------- SMOOTH SCROLL TO FEATURES (3 BOXES) ---------- */
-
-const scrollBtn = document.getElementById("scrollToFeatures");
-
-if (scrollBtn) {
-  scrollBtn.addEventListener("click", () => {
-    const target = document.querySelector(".features");
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
+/* ===========================================
+   CARD CLICK EFFECT (все карточки кликабельны)
+=========================================== */
+document.querySelectorAll(".feature-card").forEach(card => {
+  card.addEventListener("mouseenter", () => {
+    card.style.transform = "translateY(-4px)";
   });
-}
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "translateY(0)";
+  });
+});
+
+/* ===========================================
+   SMOOTH PAGE TRANSITION (между страницами)
+=========================================== */
+document.querySelectorAll("a").forEach(link => {
+  if (link.href.includes(".html")) {
+    link.addEventListener("click", (e) => {
+      const url = link.href;
+
+      e.preventDefault();
+      document.body.classList.add("fade-out");
+
+      setTimeout(() => {
+        window.location.href = url;
+      }, 250);
+    });
+  }
+});
+
+window.addEventListener("pageshow", () => {
+  document.body.classList.remove("fade-out");
+});
