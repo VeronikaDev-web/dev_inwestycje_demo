@@ -3,35 +3,58 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Inwestycje – Demo</title>
+<title>Inwestycje Premium – Demo</title>
 
 <style>
+/* ===================== GENERAL ===================== */
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
-  background: #ffffff;
+  background: #fff;
   color: #111;
   overflow-x: hidden;
 }
+.hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-/* HERO */
-.hero {
-  position: relative;
-  height: 85vh;
-  background: url("https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1400&q=80")
-    center/cover no-repeat;
+/* ===================== PRELOADER ===================== */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: white;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 99;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: #333;
 }
 
-.hero::before {
-  content: "";
+/* ===================== HERO (video background) ===================== */
+.hero {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero video {
   position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(55%);
 }
-
 .hero-content {
   position: relative;
   text-align: center;
@@ -39,184 +62,221 @@ body {
   max-width: 760px;
   padding: 20px;
 }
-
 .hero h1 {
-  font-size: 3.2rem;
+  font-size: 3.5rem;
   font-weight: 300;
-  letter-spacing: -1px;
-  margin-bottom: 20px;
 }
-
 .hero p {
+  margin-top: 15px;
   font-size: 1.2rem;
   opacity: 0.9;
-  margin-bottom: 35px;
 }
-
 .cta {
+  margin-top: 35px;
   display: flex;
-  gap: 20px;
   justify-content: center;
+  gap: 20px;
 }
-
 .btn {
   padding: 14px 28px;
   border: 1px solid white;
   color: white;
   background: transparent;
   text-decoration: none;
-  transition: 0.3s;
-  font-size: 1rem;
+  transition: .3s;
 }
-
 .btn:hover {
   background: white;
   color: black;
 }
 
-/* GRID INWESTYCJI */
+/* ===================== SECTION ===================== */
 .section {
   padding: 80px 6%;
 }
-
 .section h2 {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 300;
   margin-bottom: 50px;
   text-align: center;
 }
 
+/* ===================== GRID inwestycji ===================== */
 .grid {
   display: grid;
   gap: 28px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
 }
-
 .card {
   position: relative;
   overflow: hidden;
   border-radius: 6px;
   background: #f7f7f7;
+  transition: .4s;
   cursor: pointer;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 38px rgba(0,0,0,0.15);
-}
-
 .card img {
   width: 100%;
-  height: 220px;
+  height: 240px;
   object-fit: cover;
+  transition: transform .5s ease;
 }
-
+.card:hover img {
+  transform: scale(1.08);
+}
 .card-info {
-  padding: 18px 22px;
+  padding: 20px;
 }
-
 .card-info h3 {
-  font-size: 1.25rem;
-  font-weight: 400;
+  font-size: 1.3rem;
   margin-bottom: 6px;
 }
-
 .card-info p {
-  font-size: 0.95rem;
-  opacity: 0.7;
+  opacity: .7;
 }
 
-/* DLACZEGO MY */
+/* ===================== WHY US ===================== */
 .features {
   display: flex;
-  gap: 40px;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
 }
-
 .feature {
   width: 260px;
   text-align: center;
 }
-
 .feature h4 {
-  font-size: 1.2rem;
-  margin-bottom: 8px;
+  font-size: 1.3rem;
+}
+.feature p { opacity: .8; }
+
+/* ===================== KONTAKT ===================== */
+.contact {
+  background: #f2f2f2;
+  padding: 80px 6%;
+  text-align: center;
+}
+.contact a {
+  color: #111;
+  border-bottom: 1px solid #111;
+  text-decoration: none;
 }
 
-.feature p {
-  opacity: 0.8;
+/* ===================== DARK MODE ===================== */
+.dark body { background: #121212; color: #eee; }
+.dark .card { background: #1e1e1e; }
+.dark .contact { background: #1a1a1a; }
+.dark .btn { border-color: #fff; }
+.dark .btn:hover { background: #fff; color: #000; }
+.dark a { color: #fff; border-color: #fff; }
+
+/* Toggle button */
+.dark-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 50;
+  padding: 10px 18px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
+<div id="preloader">Ładowanie...</div>
+
+<button class="dark-toggle" onclick="toggleDark()">Dark mode</button>
+
 <!-- HERO -->
-<section class="hero">
+<section class="hero hidden">
+  <video src="https://cdn.pixabay.com/video/2019/10/24/28416-372571458_tiny.mp4" autoplay muted loop></video>
   <div class="hero-content">
-    <h1>Nowoczesne Inwestycje Premium</h1>
-    <p>Prezentacja nieruchomości w minimalistycznej, eleganckiej formie – idealna dla dewelopera.</p>
+    <h1>Inwestycje Premium</h1>
+    <p>Nowoczesne nieruchomości w eleganckim, minimalistycznym standardzie.</p>
     <div class="cta">
-      <a href="#" class="btn">Zobacz inwestycję</a>
-      <a href="#" class="btn">Kontakt</a>
+      <a href="#inwestycje" class="btn">Zobacz inwestycję</a>
+      <a href="#kontakt" class="btn">Kontakt</a>
     </div>
   </div>
 </section>
 
 <!-- INWESTYCJE -->
-<section class="section">
+<section id="inwestycje" class="section hidden">
   <h2>Wybrane inwestycje</h2>
-
   <div class="grid">
-    <div class="card">
+    <div class="card hidden">
       <img src="https://images.unsplash.com/photo-1502673530728-f79b4cab31b1?auto=format&fit=crop&w=800&q=80">
       <div class="card-info">
-        <h3>Osiedle Zielone Tarasy</h3>
-        <p>Gdańsk • 2024</p>
+        <h3>Zielone Tarasy</h3><p>Gdańsk • 2024</p>
       </div>
     </div>
 
-    <div class="card">
+    <div class="card hidden">
       <img src="https://images.unsplash.com/photo-1496309732348-3627f3f040ee?auto=format&fit=crop&w=800&q=80">
       <div class="card-info">
-        <h3>Nowa Przystań</h3>
-        <p>Sopot • 2023</p>
+        <h3>Nowa Przystań</h3><p>Sopot • 2023</p>
       </div>
     </div>
 
-    <div class="card">
+    <div class="card hidden">
       <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80">
       <div class="card-info">
-        <h3>Rezydencja Panorama</h3>
-        <p>Gdynia • 2025</p>
+        <h3>Rezydencja Panorama</h3><p>Gdynia • 2025</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="section">
-  <h2>Dlaczego warto z nami współpracować</h2>
-
+<!-- WHY US -->
+<section class="section hidden">
+  <h2>Dlaczego my</h2>
   <div class="features">
-    <div class="feature">
-      <h4>Minimalistyczny premium design</h4>
-      <p>Elegancja, przejrzystość, estetyka deweloperska.</p>
+    <div class="feature hidden">
+      <h4>Premium design</h4>
+      <p>Minimalizm, elegancja i czystość formy.</p>
     </div>
-
-    <div class="feature">
-      <h4>Pełna responsywność</h4>
-      <p>Strona dopracowana na każdy ekran — mobile first.</p>
+    <div class="feature hidden">
+      <h4>Responsywność</h4>
+      <p>Perfekcyjny wygląd na każdym ekranie.</p>
     </div>
-
-    <div class="feature">
-      <h4>Nowoczesne animacje</h4>
-      <p>Subtelne efekty, które podkreślają profesjonalizm.</p>
+    <div class="feature hidden">
+      <h4>Delikatne animacje</h4>
+      <p>Subtelne efekty podkreślają luksus.</p>
     </div>
   </div>
 </section>
 
+<!-- CONTACT -->
+<section id="kontakt" class="contact hidden">
+  <h2>Kontakt</h2>
+  <p>Jeśli chce Pan zobaczyć pełny projekt lub ustalić zakres — jestem dostępna.</p>
+  <p><a href="mailto:veronika.dev.web@gmail.com">veronika.dev.web@gmail.com</a></p>
+</section>
+
+<script>
+/* PRELOADER */
+window.onload = () => {
+  setTimeout(() => document.getElementById("preloader").style.opacity = 0, 300);
+  setTimeout(() => document.getElementById("preloader").style.display = "none", 800);
+};
+
+/* ANIMACJE SCROLL (IntersectionObserver) */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("show");
+  });
+});
+document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
+
+/* DARK MODE */
+function toggleDark() {
+  document.body.classList.toggle("dark");
+}
+</script>
 </body>
 </html>
