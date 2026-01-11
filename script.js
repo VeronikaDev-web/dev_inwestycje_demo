@@ -1,78 +1,75 @@
-// PAGE LOAD TRANSITION
-document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => {
-    document.body.classList.add("loaded");
-  }, 50);
-});
-
-// LANGUAGE SWITCH
-const langBtn = document.getElementById("langBtn");
-
-if (langBtn) {
-  langBtn.addEventListener("click", () => {
-    const newLang = langBtn.textContent === "EN" ? "PL" : "EN";
-    langBtn.textContent = newLang === "EN" ? "EN" : "PL";
-
-    document.querySelectorAll("[data-pl]").forEach(el => {
-      el.textContent = newLang === "EN" ? el.dataset.en : el.dataset.pl;
-    });
-  });
-}
-/* =========================================
-   ULTRA LUX – SCRIPT.JS
-   ========================================= */
+/* ===================================================
+   PREMIUM ULTRA LUX SCRIPT
+   Developer Demo — 2026
+   =================================================== */
 
 /* ---------- DARK MODE ---------- */
 
 const langBtn = document.getElementById("langBtn");
 
 if (langBtn) {
-    // Apply saved theme if exists
-    if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark");
-        langBtn.textContent = "☀️";
+  langBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    // смена иконки
+    if (document.body.classList.contains("dark")) {
+      langBtn.textContent = "☀️";
+    } else {
+      langBtn.textContent = "🌙";
     }
-
-    langBtn.addEventListener("click", () => {
-        document.body.classList.toggle("dark");
-
-        if (document.body.classList.contains("dark")) {
-            langBtn.textContent = "☀️";
-            localStorage.setItem("theme", "dark");
-        } else {
-            langBtn.textContent = "🌙";
-            localStorage.setItem("theme", "light");
-        }
-    });
+  });
 }
 
-/* ---------- REVEAL ON SCROLL ---------- */
 
-const reveals = document.querySelectorAll(".reveal");
+/* ---------- LANGUAGE SWITCH (PL / EN) ---------- */
 
-function revealOnScroll() {
+const langElements = document.querySelectorAll("[data-pl][data-en]");
+
+function setLanguage(lang) {
+  langElements.forEach(el => {
+    el.textContent = el.getAttribute(`data-${lang}`);
+  });
+}
+
+let currentLanguage = "pl";
+
+/* нажимаем на кнопку — меняем язык */
+if (langBtn) {
+  langBtn.addEventListener("dblclick", () => {
+    currentLanguage = currentLanguage === "pl" ? "en" : "pl";
+    setLanguage(currentLanguage);
+  });
+}
+
+
+/* ---------- REVEAL ANIMATION ---------- */
+
+const revealElements = document.querySelectorAll(".reveal");
+
+function handleReveal() {
+  revealElements.forEach(el => {
+    const position = el.getBoundingClientRect().top;
     const windowHeight = window.innerHeight;
 
-    reveals.forEach((section) => {
-        const position = section.getBoundingClientRect().top;
-        if (position < windowHeight - 80) {
-            section.classList.add("active-reveal");
-        }
-    });
+    if (position < windowHeight - 80) {
+      el.classList.add("visible");
+    }
+  });
 }
 
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
+window.addEventListener("scroll", handleReveal);
+window.addEventListener("load", handleReveal);
 
-/* ---------- SMOOTH SCROLL TO FEATURES (3rd HERO button) ---------- */
+
+/* ---------- SMOOTH SCROLL TO FEATURES (3 BOXES) ---------- */
 
 const scrollBtn = document.getElementById("scrollToFeatures");
 
 if (scrollBtn) {
-    scrollBtn.addEventListener("click", () => {
-        const featuresSection = document.querySelector(".features");
-        if (featuresSection) {
-            featuresSection.scrollIntoView({ behavior: "smooth" });
-        }
-    });
-                               }
+  scrollBtn.addEventListener("click", () => {
+    const target = document.querySelector(".features");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+}
