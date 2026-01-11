@@ -5,38 +5,165 @@
   <title>Inwestycje Premium – Developer</title>
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: #111;
+      background: #fff;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 50px;
+      border-bottom: 1px solid #eee;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      font-size: 15px;
+      color: #333;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: #000;
+    }
+
+    .hero {
+      display: flex;
+      height: 90vh;
+      padding: 0 50px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-content {
+      max-width: 45%;
+    }
+
+    .hero .title {
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero .subtitle {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn-primary, .btn-secondary {
+      padding: 14px 26px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.25s;
+    }
+
+    .btn-primary {
+      background: #111;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #333;
+    }
+
+    .btn-secondary {
+      border: 1px solid #111;
+      color: #111;
+    }
+
+    .btn-secondary:hover {
+      background: #111;
+      color: #fff;
+    }
+
+    .hero-image {
+      width: 50%;
+      height: 75vh;
+      border-radius: 14px;
+      background-size: cover;
+      background-position: center;
+      background-image: url("https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=1200");
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    }
+
+    .features {
+      display: flex;
+      justify-content: space-between;
+      padding: 70px 50px;
+    }
+
+    .feature {
+      width: 30%;
+    }
+
+    .feature h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      margin-top: 30px;
+      border-top: 1px solid #eee;
+      color: #777;
+    }
+  </style>
 </head>
 
-<body class="page-transition">
+<body>
 
 <header>
-  <div class="logo">DEVELOPER<span>PREMIUM</span></div>
+  <div class="logo">DEVELOPER<span style="font-weight:300">PREMIUM</span></div>
   <nav>
     <a href="index.html" class="active">Strona Główna</a>
     <a href="inwestycje.html">Inwestycje</a>
     <a href="kontakt.html">Kontakt</a>
-    <button class="lang-switch" id="langBtn">EN</button>
   </nav>
 </header>
 
 <section class="hero">
   <div class="hero-content">
-    <h1 class="title" data-pl="Nowoczesne Inwestycje Premium" data-en="Modern Premium Developments">
-      Nowoczesne Inwestycje Premium
-    </h1>
+    <h1 class="title">Nowoczesne Inwestycje Premium</h1>
 
-    <p class="subtitle" data-pl="Elegancja, architektura i przestrzeń zaprojektowane bez kompromisów."
-       data-en="Elegance, architecture and space designed without compromise.">
+    <p class="subtitle">
       Elegancja, architektura i przestrzeń zaprojektowane bez kompromisów.
     </p>
 
     <div class="buttons">
-      <a href="inwestycje.html" class="btn-primary" data-pl="Zobacz inwestycje" data-en="View developments">
-        Zobacz inwestycje
-      </a>
-      <a href="kontakt.html" class="btn-secondary" data-pl="Skontaktuj się" data-en="Contact">
-        Skontaktuj się
-      </a>
+      <a href="inwestycje.html" class="btn-primary">Zobacz inwestycje</a>
+      <a href="kontakt.html" class="btn-secondary">Skontaktuj się</a>
     </div>
   </div>
 
@@ -48,10 +175,12 @@
     <h3>Premium</h3>
     <p>Materiały najwyższej jakości i ponadczasowy styl.</p>
   </div>
+
   <div class="feature">
     <h3>Architektura</h3>
     <p>Nowoczesny design tworzony przez najlepsze pracownie.</p>
   </div>
+
   <div class="feature">
     <h3>Standard LUX</h3>
     <p>Przemyślane układy, naturalne światło, elegancja.</p>
