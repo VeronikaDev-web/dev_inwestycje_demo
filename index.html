@@ -1,74 +1,56 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Developer Premium – LUX</title>
-
+  <meta charset="UTF-8">
+  <title>Developer Premium – Strona Główna</title>
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
 </head>
 
-<body class="page-hidden">
+<body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="logo">DEVELOPER<span>LUX</span></div>
-
+<header class="header reveal">
+  <div class="logo">DEVELOPER<span>PREMIUM</span></div>
   <nav>
     <a href="index.html" class="active">Strona Główna</a>
     <a href="inwestycje.html">Inwestycje</a>
     <a href="kontakt.html">Kontakt</a>
-    <button id="themeToggle" class="theme-toggle">🌙</button>
+    <button class="lang-switch" id="langBtn">🌙</button>
   </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content reveal">
-    <h1 class="lux-title">
-      Nowoczesne Inwestycje Premium
-    </h1>
-
-    <p class="lux-subtitle">
-      Elegancja, architektura i przestrzeń zaprojektowane bez kompromisów.
-    </p>
+<section class="hero reveal">
+  <div class="hero-content">
+    <h1>Nowoczesne Inwestycje Premium</h1>
+    <p>Elegancja, architektura i przestrzeń zaprojektowane bez kompromisów.</p>
 
     <div class="buttons">
       <a href="inwestycje.html" class="btn-primary">Zobacz inwestycje</a>
       <a href="kontakt.html" class="btn-secondary">Skontaktuj się</a>
-      <a href="#features" class="btn-ghost scroll-btn">Przejdź dalej ↓</a>
+      <a href="#features" class="btn-ghost">Standard Premium ↓</a>
     </div>
   </div>
 
-  <div class="hero-bg"></div>
+  <div class="hero-image" style="background-image:url('assets/hero.jpg')"></div>
 </section>
 
-<!-- FEATURES -->
-<section id="features" class="features">
-
-  <a href="premium-standard.html" class="feature-card reveal">
-    <div class="feature-bg" style="background-image:url('assets/feat1.jpg')"></div>
+<section id="features" class="features reveal">
+  <div class="feature">
     <h3>Premium</h3>
-    <p>Materiały najwyższej jakości. Luksus, który czuć w każdym detalu.</p>
-  </a>
-
-  <a href="architektura.html" class="feature-card reveal">
-    <div class="feature-bg" style="background-image:url('assets/feat2.jpg')"></div>
+    <p>Materiały najwyższej jakości i ponadczasowy styl.</p>
+  </div>
+  <div class="feature">
     <h3>Architektura</h3>
-    <p>Nowoczesny styl tworzony przez najlepsze pracownie architektoniczne.</p>
-  </a>
-
-  <a href="lux-standard.html" class="feature-card reveal">
-    <div class="feature-bg" style="background-image:url('assets/feat3.jpg')"></div>
+    <p>Nowoczesny design tworzony przez najlepsze pracownie.</p>
+  </div>
+  <div class="feature">
     <h3>Standard LUX</h3>
-    <p>Elegancja, światło, ponadczasowa prostota ponad standardem premium.</p>
-  </a>
-
+    <p>Przemyślane układy, światło i elegancja.</p>
+  </div>
 </section>
 
 <footer>
-  <p>© 2026 Developer Premium LUX</p>
+  <p>© 2026 Developer Premium</p>
 </footer>
 
 </body>
