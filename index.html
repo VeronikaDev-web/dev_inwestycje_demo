@@ -6,22 +6,55 @@
 <title>Inwestycje Premium – Demo</title>
 
 <style>
-/* ===================== RESET ===================== */
+/* RESET */
 body,html {
   margin: 0;
   padding: 0;
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
+  background: #fff;
+  color: #111;
 }
 
-/* ===================== HERO (без видео — 100% стабильно) ===================== */
+/* DARK MODE */
+.dark body {
+  background: #111;
+  color: #eee;
+}
+.dark .hero {
+  color: #fff;
+}
+.dark .card {
+  background: #1b1b1b;
+}
+.dark .contact {
+  background: #1b1b1b;
+}
+
+/* DARK MODE BUTTON */
+.dark-toggle {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 999;
+  transition: .3s;
+}
+.dark-toggle:hover {
+  background: rgba(0,0,0,0.75);
+}
+
+/* HERO */
 .hero {
   height: 85vh;
-  background: linear-gradient(
-      rgba(0,0,0,0.45),
-      rgba(0,0,0,0.45)
-    ),
-    url("https://images.unsplash.com/photo-1502673530728-f79b4cab31b1?auto=format&fit=crop&w=1500&q=80");
+  background:
+    linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+    url("https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=1500&q=80");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -32,12 +65,12 @@ body,html {
   padding: 0 20px;
 }
 .hero h1 {
-  font-size: 3.2rem;
+  font-size: 3rem;
   font-weight: 300;
   margin-bottom: 15px;
 }
 .hero p {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   opacity: 0.9;
   max-width: 650px;
   margin: 0 auto;
@@ -60,10 +93,8 @@ body,html {
   color: black;
 }
 
-/* ===================== SECTIONS ===================== */
-.section {
-  padding: 70px 6%;
-}
+/* SECTIONS */
+.section { padding: 70px 6%; }
 .section h2 {
   font-size: 2.3rem;
   font-weight: 300;
@@ -71,7 +102,7 @@ body,html {
   margin-bottom: 40px;
 }
 
-/* ===================== GRID ===================== */
+/* GRID */
 .grid {
   display: grid;
   gap: 26px;
@@ -92,16 +123,14 @@ body,html {
 .card:hover img {
   transform: scale(1.07);
 }
-.card-info {
-  padding: 18px;
-}
+.card-info { padding: 18px; }
 .card-info h3 {
   margin: 0;
   font-size: 1.25rem;
 }
 .card-info p { opacity: .7; margin-top: 6px; }
 
-/* ===================== CONTACT ===================== */
+/* CONTACT */
 .contact {
   background: #f2f2f2;
   padding: 80px 6%;
@@ -113,7 +142,7 @@ body,html {
   text-decoration: none;
 }
 
-/* ===================== ANIMATIONS ===================== */
+/* ANIMATIONS */
 .hidden {
   opacity: 0;
   transform: translateY(40px);
@@ -123,10 +152,12 @@ body,html {
   opacity: 1;
   transform: translateY(0);
 }
-
 </style>
 </head>
 <body>
+
+<!-- DARK MODE BUTTON -->
+<div class="dark-toggle" onclick="toggleDark()">Dark mode</div>
 
 <!-- HERO -->
 <section class="hero hidden">
@@ -178,12 +209,20 @@ body,html {
 </section>
 
 <script>
+/* scroll animation */
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add("show");
-  });
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add("show"); });
 });
 document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
+
+/* dark mode */
+function toggleDark(){
+  if(document.documentElement.classList.contains("dark")){
+    document.documentElement.classList.remove("dark");
+  } else {
+    document.documentElement.classList.add("dark");
+  }
+}
 </script>
 
 </body>
